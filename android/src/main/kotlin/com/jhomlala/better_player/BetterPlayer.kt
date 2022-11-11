@@ -452,6 +452,12 @@ internal class BetterPlayer(
         exoPlayer?.setVideoSurface(surface)
         setAudioAttributes(exoPlayer, true)
         exoPlayer?.addListener(object : Player.Listener {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                Log.e("ok12346","onIsPlayingChanged $isPlaying");
+
+                super.onIsPlayingChanged(isPlaying)
+            }
+
             override fun onPlaybackStateChanged(playbackState: Int) {
                 when (playbackState) {
                     Player.STATE_BUFFERING -> {
@@ -624,8 +630,15 @@ internal class BetterPlayer(
             val mediaSession = MediaSessionCompat(context, TAG, null, pendingIntent)
             mediaSession.setCallback(object : MediaSessionCompat.Callback() {
                 override fun onSeekTo(pos: Long) {
+                    Log.e("ok12346","onSeekTo $pos");
+
                     sendSeekToEvent(pos)
                     super.onSeekTo(pos)
+                }
+
+                override fun onPause() {
+                    Log.e("ok12346","onPause");
+                    super.onPause()
                 }
             })
             mediaSession.isActive = true
