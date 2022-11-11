@@ -9,6 +9,8 @@ class BetterPlayerControlsConfiguration {
   ///Color of the control bars
   final Color controlBarColor;
 
+  final bool isPlaylist;
+
   ///Color of texts
   final Color textColor;
 
@@ -210,6 +212,7 @@ class BetterPlayerControlsConfiguration {
     this.backwardSkipTimeInMilliseconds = 10000,
     this.loadingColor = Colors.white,
     this.loadingWidget,
+    this.isPlaylist=false,
     this.backgroundColor = Colors.black,
     this.overflowModalColor = Colors.white,
     this.overflowModalTextColor = Colors.black,

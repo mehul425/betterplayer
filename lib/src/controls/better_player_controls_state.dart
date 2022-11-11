@@ -36,9 +36,9 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       cancelAndRestartTimer();
       final beginning = const Duration().inMilliseconds;
       final skip = (latestValue!.position -
-              Duration(
-                  milliseconds: betterPlayerControlsConfiguration
-                      .backwardSkipTimeInMilliseconds))
+          Duration(
+              milliseconds: betterPlayerControlsConfiguration
+                  .backwardSkipTimeInMilliseconds))
           .inMilliseconds;
       betterPlayerController!
           .seekTo(Duration(milliseconds: max(skip, beginning)));
@@ -50,11 +50,25 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       cancelAndRestartTimer();
       final end = latestValue!.duration!.inMilliseconds;
       final skip = (latestValue!.position +
-              Duration(
-                  milliseconds: betterPlayerControlsConfiguration
-                      .forwardSkipTimeInMilliseconds))
+          Duration(
+              milliseconds: betterPlayerControlsConfiguration
+                  .forwardSkipTimeInMilliseconds))
           .inMilliseconds;
       betterPlayerController!.seekTo(Duration(milliseconds: min(skip, end)));
+    }
+  }
+
+  void next() {
+    if (latestValue != null) {
+      cancelAndRestartTimer();
+      betterPlayerController!.playNextVideo();
+    }
+  }
+
+  void previous() {
+    if (latestValue != null) {
+      cancelAndRestartTimer();
+      betterPlayerController!.playPreviousVideo();
     }
   }
 
@@ -100,10 +114,10 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
             if (betterPlayerControlsConfiguration
                 .overflowMenuCustomItems.isNotEmpty)
               ...betterPlayerControlsConfiguration.overflowMenuCustomItems.map(
-                (customItem) => _buildMoreOptionsListRow(
+                    (customItem) => _buildMoreOptionsListRow(
                   customItem.icon,
                   customItem.title,
-                  () {
+                      () {
                     Navigator.of(context).pop();
                     customItem.onClicked.call();
                   },
@@ -171,7 +185,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 child: Icon(
                   Icons.check_outlined,
                   color:
-                      betterPlayerControlsConfiguration.overflowModalTextColor,
+                  betterPlayerControlsConfiguration.overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -213,7 +227,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
 
   void _showSubtitlesSelectionWidget() {
     final subtitles =
-        List.of(betterPlayerController!.betterPlayerSubtitlesSourceList);
+    List.of(betterPlayerController!.betterPlayerSubtitlesSourceList);
     final noneSubtitlesElementExists = subtitles.firstWhereOrNull(
             (source) => source.type == BetterPlayerSubtitlesSourceType.none) !=
         null;
@@ -248,14 +262,14 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 child: Icon(
                   Icons.check_outlined,
                   color:
-                      betterPlayerControlsConfiguration.overflowModalTextColor,
+                  betterPlayerControlsConfiguration.overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
               subtitlesSource.type == BetterPlayerSubtitlesSourceType.none
                   ? betterPlayerController!.translations.generalNone
                   : subtitlesSource.name ??
-                      betterPlayerController!.translations.generalDefault,
+                  betterPlayerController!.translations.generalDefault,
               style: _getOverflowMenuElementTextStyle(isSelected),
             ),
           ],
@@ -282,7 +296,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
         preferredName = betterPlayerController!.translations.qualityAuto;
       } else {
         preferredName =
-            asmsTrackNames.length > index ? asmsTrackNames[index] : null;
+        asmsTrackNames.length > index ? asmsTrackNames[index] : null;
       }
       children.add(_buildTrackRow(asmsTracks[index], preferredName));
     }
@@ -331,7 +345,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 child: Icon(
                   Icons.check_outlined,
                   color:
-                      betterPlayerControlsConfiguration.overflowModalTextColor,
+                  betterPlayerControlsConfiguration.overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -362,7 +376,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 child: Icon(
                   Icons.check_outlined,
                   color:
-                      betterPlayerControlsConfiguration.overflowModalTextColor,
+                  betterPlayerControlsConfiguration.overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -421,7 +435,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 child: Icon(
                   Icons.check_outlined,
                   color:
-                      betterPlayerControlsConfiguration.overflowModalTextColor,
+                  betterPlayerControlsConfiguration.overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -440,7 +454,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       color: isSelected
           ? betterPlayerControlsConfiguration.overflowModalTextColor
           : betterPlayerControlsConfiguration.overflowModalTextColor
-              .withOpacity(0.7),
+          .withOpacity(0.7),
     );
   }
 
@@ -455,8 +469,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       barrierColor: Colors.transparent,
       context: context,
       useRootNavigator:
-          betterPlayerController?.betterPlayerConfiguration.useRootNavigator ??
-              false,
+      betterPlayerController?.betterPlayerConfiguration.useRootNavigator ??
+          false,
       builder: (context) {
         return SafeArea(
           top: false,
@@ -486,8 +500,8 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
       backgroundColor: Colors.transparent,
       context: context,
       useRootNavigator:
-          betterPlayerController?.betterPlayerConfiguration.useRootNavigator ??
-              false,
+      betterPlayerController?.betterPlayerConfiguration.useRootNavigator ??
+          false,
       builder: (context) {
         return SafeArea(
           top: false,
