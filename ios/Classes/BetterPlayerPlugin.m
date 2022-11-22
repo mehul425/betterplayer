@@ -262,6 +262,7 @@ bool _remoteCommandsInitialized = false;
 }
 
 - (void) stopOtherUpdateListener: (BetterPlayer*) player{
+    [_artworkImageDict removeAllObjects];
     NSString* currentPlayerTextureId = [self getTextureId:player];
     for (NSString* textureId in _timeObserverIdDict.allKeys) {
 //        if (currentPlayerTextureId == textureId){
