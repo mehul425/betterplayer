@@ -45,7 +45,14 @@ class _PlaylistPageState extends State<PlaylistPage> {
           placeholder: Image.network(
             Constants.catImageUrl,
             fit: BoxFit.cover,
-          )),
+          ),
+        notificationConfiguration: BetterPlayerNotificationConfiguration(
+          showNotification: true,
+          title: "Elephant dream 1",
+          author: "Some author 1",
+          imageUrl: Constants.catImageUrl,
+        ),
+      ),
     );
 
     _dataSourceList.add(
@@ -56,12 +63,24 @@ class _PlaylistPageState extends State<PlaylistPage> {
           Constants.catImageUrl,
           fit: BoxFit.cover,
         ),
+        notificationConfiguration: BetterPlayerNotificationConfiguration(
+          showNotification: true,
+          title: "Elephant dream 2",
+          author: "Some author 2",
+          imageUrl: Constants.placeholderUrl,
+        ),
       ),
     );
     _dataSourceList.add(
       BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
         Constants.forBiggerJoyridesVideoUrl,
+        notificationConfiguration: BetterPlayerNotificationConfiguration(
+          showNotification: true,
+          title: "Elephant dream  3",
+          author: "Some author 3",
+          imageUrl: Constants.catImageUrl,
+        ),
       ),
     );
 
