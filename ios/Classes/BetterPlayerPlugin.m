@@ -264,9 +264,10 @@ bool _remoteCommandsInitialized = false;
 - (void) stopOtherUpdateListener: (BetterPlayer*) player{
     NSString* currentPlayerTextureId = [self getTextureId:player];
     for (NSString* textureId in _timeObserverIdDict.allKeys) {
-        if (currentPlayerTextureId == textureId){
-            continue;
-        }
+//        if (currentPlayerTextureId == textureId){
+//            continue;
+//       }
+
 
         id timeObserverId = [_timeObserverIdDict objectForKey:textureId];
         BetterPlayer* playerToRemoveListener = [_players objectForKey:textureId];
