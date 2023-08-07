@@ -25,6 +25,8 @@ export 'src/controls/better_player_controls_state.dart';
 export 'src/controls/better_player_multiple_gesture_detector.dart';
 export 'src/controls/better_player_overflow_menu_item.dart';
 export 'src/controls/better_player_progress_colors.dart';
+export 'src/controls/better_player_material_progress_bar.dart';
+export 'src/controls/better_player_cupertino_progress_bar.dart';
 export 'src/core/better_player.dart';
 export 'src/core/better_player_controller.dart';
 export 'src/core/better_player_controller_provider.dart';
